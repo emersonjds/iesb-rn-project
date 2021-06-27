@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Text, View, TextInput, Image, Alert } from 'react-native';
+import { Text, View, TextInput, Image, Alert, KeyboardAvoidingView } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 
 const img = require('../../assets/iconTodo.png');
@@ -13,7 +13,7 @@ export const Login = ({ navigation }) => {
 
   return (
     <>
-      <View
+      <KeyboardAvoidingView
         style={{
           flex: 1,
           paddingHorizontal: 20,
@@ -47,7 +47,7 @@ export const Login = ({ navigation }) => {
 
         <Text>Nao tem cadastro ainda ?!</Text>
         <Text onPress={() => navigation.navigate('Register')}>Registre-se</Text>
-      </View>
+      </KeyboardAvoidingView>
     </>
   );
 };
