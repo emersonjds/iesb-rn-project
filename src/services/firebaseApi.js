@@ -15,5 +15,15 @@ export const createUserOnFirebaseAsync = async (email, password) => {
   return user;
 }
 
-export const initializeFirebase = () => firebase.initializeFirebase(config);
+export async function signInOnFirebaseAsync(email, password) {
+  const { user } = await firebase.auth().signInWithEmailAndPassword(email, password);
+  console.log('retorno da api USUARIO', user)
+  return user;
+}
+
+export const initializeFirebase = () => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
+}
 

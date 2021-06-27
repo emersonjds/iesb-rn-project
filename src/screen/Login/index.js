@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { Text, View, TextInput, Image, Alert, KeyboardAvoidingView } from 'react-native';
+import { Text, View, TextInput, Image, Alert, KeyboardAvoidingView, Button } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
+import { signInOnFirebaseAsync } from '../../services/firebaseApi';
 
 const img = require('../../assets/iconTodo.png');
 
@@ -9,7 +10,18 @@ export const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const createTwoButtonAlert = () => Alert.alert('Dados', `${email}`);
+  const signIn = async () => {
+    try {
+      const user = await signInOnFirebaseAsync(email, password);
+      Alert.alert('Bem vindo', `${user.email}`)
+      setTimeout(() => {
+        navigation.navigate('Home')
+      }, 2000);
+    } catch (error) {
+      Alert.alert('Login Failed', error.message);
+    }
+    console.log('Emerson')
+  }
 
   return (
     <>
@@ -39,9 +51,12 @@ export const Login = ({ navigation }) => {
           placeholder="Senha"
           onChangeText={text => setPassword(text)}
           secureTextEntry={true}
+          value={password}
         />
 
-        <ButtonComponent onPress={createTwoButtonAlert}>
+        {/* <Button title="Entrar" onPress={() => signIn()} /> */}
+
+        <ButtonComponent onPress={() => signIn()}>
           <Text style={{ color: '#fff', fontWeight: 'bold' }}>Sign In</Text>
         </ButtonComponent>
 
