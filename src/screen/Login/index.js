@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import { Text, View, TextInput, Image, Alert } from "react-native";
 import ButtonComponent from "../../components/ButtonComponent";
@@ -18,25 +18,27 @@ export const Login = () => {
 
   return (
     <>
-      <View style={{flex: 1, paddingHorizontal: 20, justify: 'center', alignItems: 'center', paddingVertical: 20}}>
-        <Text style={{marginTop: 25}}>
+      <View style={{ flex: 1, paddingHorizontal: 20, justify: 'center', alignItems: 'center', paddingVertical: 20 }}>
+        <Text style={{ marginTop: 25 }}>
           My Todo
         </Text>
-        <Image source={img} style={{height: 300, width: 300, marginTop: 25}}/>
-      <TextInput
-        placeholder="Email"
-        onChangeText={text => setEmail(text)}
-      >
-
-      </TextInput>
+        <Image source={img} style={{ height: 300, width: 300, marginTop: 25 }} />
+        <TextInput
+          placeholder="Email"
+          onChangeText={text => setEmail(text)}
+        >
+        </TextInput>
+        <TextInput
+          placeholder="Email"
+          onChangeText={text => setEmail(text)}
+        >
+        </TextInput>
         <ButtonComponent onPress={createTwoButtonAlert}>
           <Text>
             Sign In
           </Text>
         </ButtonComponent>
       </View>
-
-
     </>
 
   );
