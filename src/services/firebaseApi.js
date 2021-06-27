@@ -25,6 +25,19 @@ export async function signOut() {
   return await firebase.signOut()
 }
 
+export const currentFirebaseUser = () => {
+  return new Promise((resolve, reject) => {
+    let unsubscribe = null
+    unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      resolve(user)
+    }, (error) => {
+      reject(error)
+    }, () => {
+      unsubiscrible()
+    })
+  })
+}
+
 export const initializeFirebase = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
