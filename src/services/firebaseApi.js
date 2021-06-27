@@ -9,4 +9,11 @@ const config = {
   messagingSenderId: '254572727152',
 };
 
+export const createUserOnFirebaseAsync = async (email, password) => {
+  const { user } = await firebase.auth()
+    .createUserWithEmailAndPassword(email, password);
+  return user;
+}
+
 export const initializeFirebase = () => firebase.initializeFirebase(config);
+

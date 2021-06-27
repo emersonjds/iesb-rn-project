@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
 
-import { Text, TextInput, KeyboardAvoidingView } from 'react-native';
+import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
+import { createUserOnFirebaseAsync } from '../../services/firebaseApi';
 
 export const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const _createUserAsync = async () => {
+    try {
+      const user = await createUserOnFirebaseAsync(
+        email,
+        password
+      );
+
+      console.log(user)
+      Alert.alert(
+        'User Created!',
+        `User ${user.email} has succesfuly been created!`,
+      );
+    } catch (error) {
+      Alert.alert('Create User Failed!', error.message);
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -26,7 +45,7 @@ export const Register = () => {
         value={password}
       />
 
-      <ButtonComponent>
+      <ButtonComponent onPress={_createUserAsync}>
         <Text style={{ color: '#fff', fontWeight: 'bold' }}>Register User</Text>
       </ButtonComponent>
     </KeyboardAvoidingView>
