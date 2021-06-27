@@ -2,8 +2,12 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
-import App from './src';
-import {name as appName} from './app.json';
+import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent(appName, () => App);
+import { name as appName } from './app.json';
+
+import wrappedRoutes from './src';
+
+AppRegistry.registerComponent(appName, () => {
+  return wrappedRoutes
+});

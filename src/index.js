@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native';
 import Routes from './routes';
 import { NavigationContainer } from '@react-navigation/native';
+import { initializeFirebase } from '../src/services/firebaseApi';
 
-const App = () => {
+
+const wrappedRoutes = () => {
+
+  const startFirebase = async () => {
+    console.log('inicializado firebase', initializeFirebase);
+    await initializeFirebase()
+  }
+
+  useEffect(() => {
+    startFirebase()
+  }, [])
+
   return (
     <NavigationContainer>
-      {/* eslint-disable-next-line react-native/no-inline-styles */}
       <SafeAreaView style={{ flex: 1 }}>
         <Routes />
       </SafeAreaView>
@@ -14,4 +25,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default wrappedRoutes;
