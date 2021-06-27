@@ -1,15 +1,16 @@
 import React from 'react';
-
-import { Text, View, SafeAreaView } from "react-native";
-import { Login } from "./screen/Login";
-import { Register } from "./screen/Register";
+import { SafeAreaView } from 'react-native';
+import Routes from './routes';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Login />
-      <Register />
-    </SafeAreaView>
+    <NavigationContainer>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
+      <SafeAreaView style={{ flex: 1 }}>
+        <Routes />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 

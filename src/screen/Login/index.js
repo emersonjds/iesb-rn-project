@@ -1,13 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import {View, Text} from 'react-native'
+import { Text, View } from 'react-native';
 
 export const Login = () => {
   return (
     <View>
-      <Text>
-        Login Area
-      </Text>
+      <Text>Login Area</Text>
     </View>
-    )
-}
+  );
+};
