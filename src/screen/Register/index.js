@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { Text, TextInput, KeyboardAvoidingView } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 
-const img = require('../../assets/iconTodo.png');
-
 export const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
