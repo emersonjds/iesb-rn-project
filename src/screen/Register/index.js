@@ -4,7 +4,7 @@ import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { createUserOnFirebaseAsync } from '../../services/firebaseApi';
 
-export const Register = () => {
+export const Register = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,6 +20,11 @@ export const Register = () => {
         'User Created!',
         `User ${user.email} has succesfuly been created!`,
       );
+
+      setTimeout(() => {
+        navigation.navigate('Login')
+      }, 2000)
+
     } catch (error) {
       Alert.alert('Create User Failed!', error.message);
     }
