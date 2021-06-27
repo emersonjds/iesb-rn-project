@@ -21,9 +21,14 @@ export async function signInOnFirebaseAsync(email, password) {
   return user;
 }
 
+export async function signOut() {
+  return await firebase.signOut()
+}
+
 export const initializeFirebase = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
 }
+
 
