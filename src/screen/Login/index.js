@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, Image, Alert, KeyboardAvoidingView, Button } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { signInOnFirebaseAsync } from '../../services/firebaseApi';
+import { CommonActions } from '@react-navigation/native';
 
 const img = require('../../assets/iconTodo.png');
 
@@ -15,7 +16,12 @@ export const Login = ({ navigation }) => {
       const user = await signInOnFirebaseAsync(email, password);
       Alert.alert('Bem vindo', `${user.email}`)
       setTimeout(() => {
-        navigation.navigate('Home')
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'TaskList' }],
+          }),
+        )
       }, 2000);
     } catch (error) {
       Alert.alert('Login Failed', error.message);

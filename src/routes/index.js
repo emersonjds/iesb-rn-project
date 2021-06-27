@@ -3,9 +3,27 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Login } from '../screen/Login';
 import { Register } from '../screen/Register';
-import Home from '../screen/Home';
+import ToDoTasks from '../screen/TodoTasks'
+import DoneTasks from '../screen/DoneTasks'
+
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
+
+const Tab = createMaterialTopTabNavigator()
+
+export const TaskTab = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: 'tomato', inactiveTintColor: 'gray',
+        iconStyle: { width: 20, height: 20 }
+      }}>
+      <Tab.Screen name="To Do" component={ToDoTasks} />
+      <Tab.Screen name="Done" component={DoneTasks} />
+    </Tab.Navigator >
+  )
+}
 
 const Routes = () => {
   return (
@@ -16,7 +34,7 @@ const Routes = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="TaskList" component={TaskTab} />
     </Stack.Navigator>
   );
 };
