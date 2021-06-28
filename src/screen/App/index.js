@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 import { CommonActions } from '@react-navigation/native'
 import { currentFirebaseUser } from '../../services/firebaseApi';
+import { Container, TitleLogin, Loading } from './styles';
 
 const App = ({ navigation }) => {
 
@@ -10,7 +11,7 @@ const App = ({ navigation }) => {
     routes: [{ name: 'Login' }]
   })
 
-  const verifyUserLogger = async () => {
+  const verifyUserLogger = () => {
 
     setTimeout(async () => {
       try {
@@ -36,12 +37,12 @@ const App = ({ navigation }) => {
   }, [])
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>
+    <Container style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <TitleLogin>
         Carregando dados ...
-      </Text>
-      <ActivityIndicator style={{ height: 50, width: 50 }} />
-    </View>
+      </TitleLogin>
+      <Loading style={{ height: 50, width: 50 }} />
+    </Container>
   )
 }
 
