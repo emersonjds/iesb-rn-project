@@ -5,8 +5,10 @@ import { Login } from '../screen/Login';
 import { Register } from '../screen/Register';
 import ToDoTasks from '../screen/TodoTasks'
 import DoneTasks from '../screen/DoneTasks'
+import App from '../screen/App';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 
 const Stack = createStackNavigator();
 
@@ -27,7 +29,8 @@ export const TaskTab = () => {
 
 const Routes = () => {
   return (
-    <Stack.Navigator headerMode={false}>
+    <Stack.Navigator headerMode="screen">
+      <Stack.Screen name="App" component={App} options={{ headerShown: false }} />
       <Stack.Screen
         name="Login"
         component={Login}
