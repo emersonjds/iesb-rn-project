@@ -10,38 +10,50 @@ const config = {
 };
 
 export const createUserOnFirebaseAsync = async (email, password) => {
-  const { user } = await firebase.auth()
+  const { user } = await firebase
+    .auth()
     .createUserWithEmailAndPassword(email, password);
   return user;
-}
+};
 
 export async function signInOnFirebaseAsync(email, password) {
-  const { user } = await firebase.auth().signInWithEmailAndPassword(email, password);
-  console.log('retorno da api USUARIO', user)
+  const { user } = await firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password);
+  console.log('retorno da api USUARIO', user);
   return user;
 }
 
 export async function signOut() {
-  return await firebase.signOut()
+  return await firebase.signOut();
 }
 
 export const currentFirebaseUser = () => {
   return new Promise((resolve, reject) => {
-    let unsubscribe = null
-    unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      resolve(user)
-    }, (error) => {
-      reject(error)
-    }, () => {
-      unsubiscrible()
-    })
-  })
-}
+    let unsubscrible = null;
+    unsubscrible = firebase.auth().onAuthStateChanged(
+      user => {
+        resolve(user);
+      },
+      error => {
+        reject(error);
+      },
+      () => {
+        unsubscrible();
+      },
+    );
+  });
+};
+
+export const writeTaskOnFirebaseAsync = async task => {
+  const user = await currentFirebaseUser();
+  var tasksReference = firebase.database().ref(user.uid);
+  const key = tasksReference.child('tasks').push().key;
+  return await tasksReference.child(`tasks/${key}`).update(task);
+};
 
 export const initializeFirebase = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
-}
-
-
+};
