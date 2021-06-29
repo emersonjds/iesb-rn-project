@@ -10,25 +10,20 @@ export const Register = ({ navigation }) => {
 
   const _createUserAsync = async () => {
     try {
-      const user = await createUserOnFirebaseAsync(
-        email,
-        password
-      );
+      const user = await createUserOnFirebaseAsync(email, password);
 
-      console.log(user)
       Alert.alert(
         'User Created!',
         `User ${user.email} has succesfuly been created!`,
       );
 
       setTimeout(() => {
-        navigation.navigate('Login')
-      }, 2000)
-
+        navigation.navigate('Login');
+      }, 2000);
     } catch (error) {
       Alert.alert('Create User Failed!', error.message);
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView

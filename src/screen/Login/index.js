@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 
-import { Text, View, TextInput, Image, Alert, KeyboardAvoidingView, Button } from 'react-native';
+import {
+  Text,
+  TextInput,
+  Image,
+  Alert,
+  KeyboardAvoidingView,
+} from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { signInOnFirebaseAsync } from '../../services/firebaseApi';
 import { CommonActions } from '@react-navigation/native';
@@ -14,20 +20,19 @@ export const Login = ({ navigation }) => {
   const signIn = async () => {
     try {
       const user = await signInOnFirebaseAsync(email, password);
-      Alert.alert('Bem vindo', `${user.email}`)
+      Alert.alert('Bem vindo', `${user.email}`);
       setTimeout(() => {
         navigation.dispatch(
           CommonActions.reset({
             index: 0,
             routes: [{ name: 'TaskList' }],
           }),
-        )
+        );
       }, 2000);
     } catch (error) {
       Alert.alert('Login Failed', error.message);
     }
-    console.log('Emerson')
-  }
+  };
 
   return (
     <>
