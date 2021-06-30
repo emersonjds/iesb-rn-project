@@ -11,9 +11,6 @@ const ToDoTasks = ({ navigation }) => {
     <>
       <View style={{
         flex: 1,
-        backgroundColor: 'orange',
-        justifyContent: 'center',
-        alignItems: 'center',
         paddingHorizontal: 20,
 
 
