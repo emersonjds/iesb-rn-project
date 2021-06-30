@@ -5,9 +5,11 @@ import { Login } from '../screen/Login';
 import { Register } from '../screen/Register';
 import ToDoTasks from '../screen/TodoTasks'
 import DoneTasks from '../screen/DoneTasks'
+import Task from '../screen/Task';
 import App from '../screen/App';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 
 
 const Stack = createStackNavigator();
@@ -38,6 +40,7 @@ const Routes = () => {
       />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="TaskList" component={TaskTab} />
+      <Stack.Screen name="Task" component={Task} />
     </Stack.Navigator>
   );
 };

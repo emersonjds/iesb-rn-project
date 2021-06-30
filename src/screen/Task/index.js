@@ -53,7 +53,7 @@ const Task = ({ navigation }) => {
       </SwitchContainer>
 
       <ButtonComponent onPress={_saveTaskAsync()}>
-        <Text>Salvar</Text>
+        <Text style={{ color: '#fff', fontWeight: 'bold' }}>Salvar</Text>
       </ButtonComponent>
 
     </Container>
