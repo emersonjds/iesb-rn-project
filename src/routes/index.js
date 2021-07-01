@@ -30,7 +30,6 @@ export const TaskTab = () => {
 const Routes = () => {
   return (
     <Stack.Navigator headerMode="screen">
-      <Stack.Screen name="TaskList" component={TaskTab} />
       <Stack.Screen name="App" component={App} options={{ headerShown: false }} />
       <Stack.Screen
         name="Login"
@@ -38,7 +37,7 @@ const Routes = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Register" component={Register} />
-      {/* <Stack.Screen name="TaskList" component={TaskTab} /> */}
+       <Stack.Screen name="TaskList" component={TaskTab} />
       <Stack.Screen name="Task" component={Task} />
     </Stack.Navigator>
   );

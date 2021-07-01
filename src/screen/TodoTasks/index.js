@@ -12,6 +12,8 @@ const ToDoTasks = ({ navigation }) => {
     readTasksFromFirebaseAsync(_fetchTasks)
   }, [])
 
+
+
   const _fetchTasks = (tasks) => {
     const tasksTodos = tasks.filter(t => !t.isDone)
     setTasks({ tasks: tasksTodos })

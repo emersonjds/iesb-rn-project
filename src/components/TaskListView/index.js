@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   TouchableOpacity,
   SectionList
 } from 'react-native';
 
 import {
-  Container,
   HeaderTagText,
   HeaderText,
   HeaderContainer,
@@ -15,6 +14,11 @@ import {
 } from './styles';
 
 const TaskListView = ({tasks}) => {
+
+  useEffect(() => {
+    console.log('tarefas', tasks);
+  }, [])
+
   const _renderSectionHeader = (sectionData) => (
     <HeaderContainer>
       <HeaderTagContainer>
@@ -45,22 +49,20 @@ const TaskListView = ({tasks}) => {
   return (
     <SectionList
       renderSectionHeader={(section) => _renderSectionHeader(section)}
-      sections={[
-        {
-          data: tasks.filter(data => {
-            return data.priority
-          }),
-          key: "highPriority",
-          title: 'High Priority'
-        },
-        {
-          data: tasks.filter(data => {
-            return !data.priority
-          }),
-          key: 'lowPriority',
-          title: 'Low Priority'
-        }
-      ]}
+      sections={
+        [
+          {
+            data: tasks.filter(data => {
+              return data.priority
+            }), key: 'highPriority', title: 'High Priority'
+          },
+          {
+            data: tasks.filter(data => {
+              return !data.priority
+            }), key: 'lowPriority', title: 'Low Priority'
+          }
+        ]
+      }
       renderItem={(data) => _renderItem(data)} />
   );
 }
