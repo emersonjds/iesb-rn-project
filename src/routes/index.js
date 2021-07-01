@@ -10,8 +10,6 @@ import App from '../screen/App';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
-
 const Stack = createStackNavigator();
 
 const Tab = createMaterialTopTabNavigator()

@@ -12,8 +12,6 @@ const ToDoTasks = ({ navigation }) => {
       <View style={{
         flex: 1,
         paddingHorizontal: 20,
-
-
       }}>
         <TouchableOpacity
           onPress={() => _goToTask()}
