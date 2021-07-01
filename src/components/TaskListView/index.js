@@ -14,7 +14,7 @@ import {
   ItemTitle
 } from './styles';
 
-const TaskListView = () => {
+const TaskListView = ({tasks}) => {
   const _renderSectionHeader = (sectionData) => (
     <HeaderContainer>
       <HeaderTagContainer>
