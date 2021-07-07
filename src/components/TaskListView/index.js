@@ -38,12 +38,12 @@ const TaskListView = ({ tasks, navigation }) => {
       renderSectionHeader={section => _renderSectionHeader(section)}
       sections={[
         {
-          data: tasks?.filter(data => data.priority),
+          data: tasks.filter(data => data.priority),
           key: 'highPriority',
           title: 'High Priority',
         },
         {
-          data: tasks?.filter(data => !data.priority),
+          data: tasks.filter(data => !data.priority),
           key: 'lowPriority',
           title: 'Low Priority',
         },

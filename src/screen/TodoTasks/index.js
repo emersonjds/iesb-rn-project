@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { readTasksFromFirebaseAsync } from '../../services/firebaseApi';
+import { readTaskFromFirebaseAsync } from "../../services/firebaseApi";
 import TaskListView from '../../components/TaskListView';
 import { ButtonTodo, Container } from './styles';
 
@@ -7,7 +7,7 @@ const ToDoTasks = ({ navigation }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    readTasksFromFirebaseAsync(_fetchTasks);
+    readTaskFromFirebaseAsync(_fetchTasks);
   }, []);
 
   // eslint-disable-next-line no-shadow
