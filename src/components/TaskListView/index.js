@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   TouchableOpacity,
   SectionList
@@ -13,11 +13,7 @@ import {
   ItemTitle
 } from './styles';
 
-const TaskListView = ({tasks}) => {
-
-  useEffect(() => {
-    console.log('tarefas', tasks);
-  }, [])
+const TaskListView = ({ tasks }) => {
 
   const _renderSectionHeader = (sectionData) => (
     <HeaderContainer>

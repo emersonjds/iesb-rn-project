@@ -5,10 +5,10 @@ export const Container = styled.View`
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
+  
 `;
 
 export const HeaderContainer = styled.View`
-  flex: 1;
   flex-direction: row;
   align-items: center;
   background-color: silver;
@@ -38,10 +38,10 @@ export const HeaderText = styled.Text`
 export const ItemContainer = styled.View`
   flex: 1;
   flex-direction: column;
-  background-color: #f3f2f0;
+  background-color: #F3F2F0;
   margin-top: 5px;
   padding: 10px;
-  height: 75px;
+  height: 50px;
 `;
 
 export const ItemTitle = styled.Text`
