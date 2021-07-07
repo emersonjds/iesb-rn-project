@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from 'react';
 import { SectionList, TouchableOpacity } from 'react-native';
 
@@ -11,7 +12,6 @@ import {
 } from './styles';
 
 const TaskListView = ({ tasks, navigation }) => {
-
   const _renderSectionHeader = sectionData => (
     <HeaderContainer>
       <HeaderTagContainer>
@@ -22,15 +22,17 @@ const TaskListView = ({ tasks, navigation }) => {
   );
 
   const _renderItem = itemData => (
-    <TouchableOpacity onPress={_onClickTask(itemData?.item)}>
-      <ItemContainer>
-        <ItemTitle>{itemData.item.title}</ItemTitle>
-      </ItemContainer>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity onPress={() => _onClickTask(itemData?.item)} >
+        <ItemContainer >
+          <ItemTitle>{itemData.item.title}</ItemTitle>
+        </ItemContainer>
+      </TouchableOpacity>
+    </>
   );
 
   const _onClickTask = task => {
-    navigation.navigate('PageTask', task);
+    navigation.navigate('Task', { task });
   };
 
   return (

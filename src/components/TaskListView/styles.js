@@ -36,9 +36,8 @@ export const HeaderText = styled.Text`
 `;
 
 export const ItemContainer = styled.View`
-  flex: 1;
   flex-direction: column;
-  background-color: #F3F2F0;
+  background-color: lightgray;
   margin-top: 5px;
   padding: 10px;
   height: 50px;

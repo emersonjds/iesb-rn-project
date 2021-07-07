@@ -8,9 +8,9 @@ export const Container = styled.View`
 export const ButtonTodo = styled.TouchableOpacity`
   height: 50px;
   width: 50px;
-  background-color: blue;
+  background-color: deeppink;
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   border-radius: 50;
 `;

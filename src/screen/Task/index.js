@@ -6,15 +6,16 @@ import { writeTaskOnFirebaseAsync } from '../../services/firebaseApi';
 import { Container, Input, SwitchContainer, SwitchText } from './styles';
 
 const Task = ({ navigation, route }) => {
+
   const [key, setKey] = useState('');
   const [title, setTitle] = useState('');
   const [resume, setResume] = useState('');
   const [priority, setPriority] = useState(true);
   const [isDone, setIsDone] = useState(false);
 
-  const initialGetdata = async () => {
+  const initialGetdata = () => {
     try {
-      const { task } = await route.params;
+      const { task } = route.params;
       setKey(task.key);
       setTitle(task.title);
       setResume(task.resume);
@@ -43,6 +44,7 @@ const Task = ({ navigation, route }) => {
   };
 
   useEffect(() => {
+    console.log(route.params)
     initialGetdata();
   }, []);
 
