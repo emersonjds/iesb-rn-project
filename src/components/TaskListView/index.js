@@ -30,7 +30,7 @@ const TaskListView = ({ tasks, navigation }) => {
   );
 
   const _onClickTask = task => {
-    navigation.navigate('PageTask', { task });
+    navigation.navigate('PageTask', task);
   };
 
   return (
