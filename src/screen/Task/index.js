@@ -14,15 +14,14 @@ const Task = ({ navigation, route }) => {
   const [isDone, setIsDone] = useState(false);
 
   const initialGetdata = () => {
-    try {
-      const { task } = route.params;
-      setKey(task.key);
-      setTitle(task.title);
-      setResume(task.resume);
-      setPriority(task.priority);
-      setIsDone(task.isDone);
-    } catch (error) {
-      Alert.alert('Error', error);
+    // #TODO: corrigir async await
+    const { task } = route.params;
+    if (task) {
+      setKey(task?.key);
+      setTitle(task?.title);
+      setResume(task?.resume);
+      setPriority(task?.priority);
+      setIsDone(task?.isDone);
     }
   };
 
@@ -39,12 +38,11 @@ const Task = ({ navigation, route }) => {
       await writeTaskOnFirebaseAsync(task);
       navigation.goBack();
     } catch (error) {
-      Alert.alert('error saving', error.message);
+      Alert.alert('error on saving task ', error.message);
     }
   };
 
   useEffect(() => {
-    console.log(route.params)
     initialGetdata();
   }, []);
 
