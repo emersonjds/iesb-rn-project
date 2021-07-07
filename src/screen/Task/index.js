@@ -5,16 +5,29 @@ import ButtonComponent from '../../components/ButtonComponent';
 import { writeTaskOnFirebaseAsync } from '../../services/firebaseApi';
 import { Container, Input, SwitchContainer, SwitchText } from './styles';
 
-
-
-const Task = ({ navigation }) => {
+const Task = ({ navigation, route }) => {
+  const [key, setKey] = useState('');
   const [title, setTitle] = useState('');
   const [resume, setResume] = useState('');
   const [priority, setPriority] = useState(true);
   const [isDone, setIsDone] = useState(false);
 
+  const initialGetdata = async () => {
+    try {
+      const { task } = await route.params;
+      setKey(task.key);
+      setTitle(task.title);
+      setResume(task.resume);
+      setPriority(task.priority);
+      setIsDone(task.isDone);
+    } catch (error) {
+      Alert.alert('Error', error);
+    }
+  };
+
   const _saveTaskAsync = async () => {
     let task = {
+      key,
       title,
       resume,
       priority,
@@ -29,11 +42,15 @@ const Task = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    initialGetdata();
+  }, []);
+
   return (
     <Container>
       <Input
         placeholder="Title"
-        onChangeText={(value) => setTitle(value)}
+        onChangeText={value => setTitle(value)}
         value={title}
       />
       <Input
@@ -42,26 +59,21 @@ const Task = ({ navigation }) => {
         multiple={true}
         numberOfLines={4}
         value={resume}
-        onChangeText={(value) => setResume(value)}
+        onChangeText={value => setResume(value)}
       />
       <SwitchContainer>
-        <Switch value={priority}
-          onValueChange={(value) => setPriority(value)} />
+        <Switch value={priority} onValueChange={value => setPriority(value)} />
         <SwitchText>High Priority</SwitchText>
       </SwitchContainer>
       <SwitchContainer>
-        <Switch value={isDone}
-          onValueChange={(value) => setIsDone(value)} />
+        <Switch value={isDone} onValueChange={value => setIsDone(value)} />
         <SwitchText>Is Done?</SwitchText>
       </SwitchContainer>
 
       <ButtonComponent onPress={() => _saveTaskAsync()}>
         <Text style={{ color: '#fff', fontWeight: 'bold' }}>Salvar</Text>
       </ButtonComponent>
-
     </Container>
-
-
   );
 };
 

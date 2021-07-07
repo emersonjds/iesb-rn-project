@@ -48,24 +48,24 @@ export const currentFirebaseUser = () => {
 export const writeTaskOnFirebaseAsync = async task => {
   const user = await currentFirebaseUser();
   var tasksReference = firebase.database().ref(user.uid);
-  const key = tasksReference.child('tasks').push().key;
+  const key = task.key ? task.key : tasksReference.child('tasks').push().key;
   return await tasksReference.child(`tasks/${key}`).update(task);
 };
 
-export const readTasksFromFirebaseAsync = async (listener) => {
+export const readTasksFromFirebaseAsync = async listener => {
   const user = await currentFirebaseUser();
   var taskReference = firebase.database().ref(user.uid).child('tasks');
 
   taskReference.on('value', snapshot => {
-    var tasks = []
+    var tasks = [];
     snapshot.forEach(element => {
-      var task = element.val()
-      task.key = element.key
-      tasks.push(task)
-    })
-    listener(tasks)
-  })
-}
+      var task = element.val();
+      task.key = element.key;
+      tasks.push(task);
+    });
+    listener(tasks);
+  });
+};
 
 export const initializeFirebase = () => {
   if (!firebase.apps.length) {

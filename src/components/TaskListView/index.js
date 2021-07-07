@@ -1,66 +1,56 @@
 import React, { useEffect } from 'react';
-import {
-  TouchableOpacity,
-  SectionList
-} from 'react-native';
+import { SectionList, TouchableOpacity } from 'react-native';
 
 import {
+  HeaderContainer,
+  HeaderTagContainer,
   HeaderTagText,
   HeaderText,
-  HeaderContainer,
   ItemContainer,
-  HeaderTagContainer,
-  ItemTitle
+  ItemTitle,
 } from './styles';
 
-const TaskListView = ({ tasks }) => {
+const TaskListView = ({ tasks, navigation }) => {
 
-  const _renderSectionHeader = (sectionData) => (
+  const _renderSectionHeader = sectionData => (
     <HeaderContainer>
       <HeaderTagContainer>
-        <HeaderTagText>
-          {
-            sectionData.section.title.substr(0, 1)
-          }
-        </HeaderTagText>
+        <HeaderTagText>{sectionData.section.title.substr(0, 1)}</HeaderTagText>
       </HeaderTagContainer>
-      <HeaderText>
-        {
-          sectionData.section.title
-        }
-      </HeaderText>
+      <HeaderText>{sectionData.section.title}</HeaderText>
     </HeaderContainer>
-  )
+  );
 
-  const _renderItem = (itemData) => (
-    <TouchableOpacity>
+  const _renderItem = itemData => (
+    <TouchableOpacity onPress={_onClickTask(itemData?.item)}>
       <ItemContainer>
-        <ItemTitle>
-          {itemData.item.title}
-        </ItemTitle>
+        <ItemTitle>{itemData.item.title}</ItemTitle>
       </ItemContainer>
     </TouchableOpacity>
-  )
+  );
+
+  const _onClickTask = task => {
+    navigation.navigate('PageTask', { task });
+  };
 
   return (
     <SectionList
-      renderSectionHeader={(section) => _renderSectionHeader(section)}
-      sections={
-        [
-          {
-            data: tasks.filter(data => {
-              return data.priority
-            }), key: 'highPriority', title: 'High Priority'
-          },
-          {
-            data: tasks.filter(data => {
-              return !data.priority
-            }), key: 'lowPriority', title: 'Low Priority'
-          }
-        ]
-      }
-      renderItem={(data) => _renderItem(data)} />
+      renderSectionHeader={section => _renderSectionHeader(section)}
+      sections={[
+        {
+          data: tasks?.filter(data => data.priority),
+          key: 'highPriority',
+          title: 'High Priority',
+        },
+        {
+          data: tasks?.filter(data => !data.priority),
+          key: 'lowPriority',
+          title: 'Low Priority',
+        },
+      ]}
+      renderItem={data => _renderItem(data)}
+    />
   );
-}
+};
 
 export default TaskListView;
