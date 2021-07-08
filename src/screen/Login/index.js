@@ -58,7 +58,12 @@ export const Login = ({ navigation }) => {
           value={email}
           onChangeText={text => setEmail(text)}
           autoCapitalize="none"
-          style={{ backgroundColor: 'white', marginBottom: 15, width: 360, alignSelf: 'center' }}
+          style={{
+            backgroundColor: 'white',
+            marginBottom: 15,
+            width: 360,
+            alignSelf: 'center'
+          }}
           keyboardType={'email-address'}
           mode="outlined"
           theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
@@ -68,18 +73,30 @@ export const Login = ({ navigation }) => {
           value={password}
           onChangeText={text => setPassword(text)}
           autoCapitalize="none"
-          style={{ backgroundColor: 'white', marginBottom: 5, width: 360, alignSelf: 'center' }}
+          style={{
+            backgroundColor: 'white',
+            marginBottom: 5,
+            width: 360,
+            alignSelf: 'center'
+          }}
           secureTextEntry={true}
           mode="outlined"
           theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
         />
         <ButtonComponent onPress={() => signIn()}>
-          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Sign In</Text>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Entrar</Text>
         </ButtonComponent>
 
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <Text>Nao tem cadastro ainda ?!</Text>
-          <Text onPress={() => navigation.navigate('Register')}>Registre-se</Text>
+          <Text onPress={() =>
+            navigation.navigate('Register')}
+            style={{
+              color: '#594da7',
+              marginTop: 10,
+              fontWeight: 'bold',
+              fontSize: 16
+            }}>Registre-se</Text>
         </View>
 
       </View>
