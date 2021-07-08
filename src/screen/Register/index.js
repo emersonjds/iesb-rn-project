@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
-import { Text, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
+import { Text, KeyboardAvoidingView, Alert } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { createUserOnFirebaseAsync } from '../../services/firebaseApi';
+import { TextInput } from 'react-native-paper';
+
+import { View } from 'react-native';
 
 export const Register = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -26,28 +29,50 @@ export const Register = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>New User</Text>
-      <TextInput
-        style={{ marginBottom: 20, marginTop: 20 }}
-        placeholder="Email"
-        onChangeText={text => setEmail(text)}
-        value={email}
-        keyboardType={'email-address'}
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={{ marginBottom: 20 }}
-        placeholder="Senha"
-        onChangeText={text => setPassword(text)}
-        secureTextEntry={true}
-        value={password}
-      />
-
-      <ButtonComponent onPress={_createUserAsync}>
-        <Text style={{ color: '#fff', fontWeight: 'bold' }}>Register User</Text>
-      </ButtonComponent>
-    </KeyboardAvoidingView>
+    <>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: 20,
+          justify: 'center',
+          alignItems: 'center',
+          paddingVertical: 20,
+        }}>
+        <Text style={{ marginBottom: 20 }}>Cadastro</Text>
+        <TextInput
+          label='Email'
+          value={email}
+          onChangeText={text => setEmail(text)}
+          autoCapitalize="none"
+          style={{
+            backgroundColor: 'white',
+            marginBottom: 15,
+            width: '100%',
+            alignSelf: 'center'
+          }}
+          keyboardType={'email-address'}
+          mode="outlined"
+          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
+        />
+        <TextInput
+          label='Senha'
+          value={password}
+          onChangeText={text => setPassword(text)}
+          autoCapitalize="none"
+          style={{
+            backgroundColor: 'white',
+            marginBottom: 5,
+            width: '100%',
+            alignSelf: 'center'
+          }}
+          secureTextEntry={true}
+          mode="outlined"
+          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
+        />
+        <ButtonComponent onPress={_createUserAsync}>
+          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Finalizar Cadastro</Text>
+        </ButtonComponent>
+      </View>
+    </>
   );
 };
