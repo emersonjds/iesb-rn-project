@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {
   Text,
-  TextInput,
+  // TextInput,
   Image,
   Alert,
   KeyboardAvoidingView,
@@ -10,7 +10,9 @@ import {
 import ButtonComponent from '../../components/ButtonComponent';
 import { signInOnFirebaseAsync } from '../../services/firebaseApi';
 import { CommonActions } from '@react-navigation/native';
+import { TextInput } from 'react-native-paper';
 
+import { View } from 'react-native'
 const img = require('../../assets/iconTodo.png');
 
 export const Login = ({ navigation }) => {
@@ -36,10 +38,10 @@ export const Login = ({ navigation }) => {
 
   return (
     <>
-      <KeyboardAvoidingView
+      <View
         style={{
-          flex: 1,
-          paddingHorizontal: 20,
+          flex: 2,
+          paddingHorizontal: 40,
           justify: 'center',
           alignItems: 'center',
           paddingVertical: 20,
@@ -49,31 +51,39 @@ export const Login = ({ navigation }) => {
           source={img}
           style={{ height: 300, width: 300, marginTop: 25 }}
         />
+      </View>
+      <View style={{ paddingHorizontal: 10, flex: 2 }}>
         <TextInput
-          style={{ marginBottom: 20, marginTop: 20 }}
-          placeholder="Email"
-          onChangeText={text => setEmail(text)}
+          label='Email'
           value={email}
-          keyboardType={'email-address'}
+          onChangeText={text => setEmail(text)}
           autoCapitalize="none"
+          style={{ backgroundColor: 'white', marginBottom: 15, width: 360, alignSelf: 'center' }}
+          keyboardType={'email-address'}
+          mode="outlined"
+          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
         />
         <TextInput
-          style={{ marginBottom: 20 }}
-          placeholder="Senha"
-          onChangeText={text => setPassword(text)}
-          secureTextEntry={true}
+          label='Senha'
           value={password}
+          onChangeText={text => setPassword(text)}
+          autoCapitalize="none"
+          style={{ backgroundColor: 'white', marginBottom: 5, width: 360, alignSelf: 'center' }}
+          secureTextEntry={true}
+          mode="outlined"
+          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
         />
-
-        {/* <Button title="Entrar" onPress={() => signIn()} /> */}
-
         <ButtonComponent onPress={() => signIn()}>
           <Text style={{ color: '#fff', fontWeight: 'bold' }}>Sign In</Text>
         </ButtonComponent>
 
-        <Text>Nao tem cadastro ainda ?!</Text>
-        <Text onPress={() => navigation.navigate('Register')}>Registre-se</Text>
-      </KeyboardAvoidingView>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Nao tem cadastro ainda ?!</Text>
+          <Text onPress={() => navigation.navigate('Register')}>Registre-se</Text>
+        </View>
+
+      </View>
+
     </>
   );
 };

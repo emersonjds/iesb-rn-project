@@ -1,9 +1,9 @@
 
 import styled from 'styled-components/native'
 export const GenericButton = styled.TouchableOpacity`
-  height: 52px;
-  width: 90%;
-  background-color: deeppink;
+  height: 60px;
+  width: 100%;
+  background-color: #6155af;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
