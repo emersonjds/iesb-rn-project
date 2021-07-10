@@ -27,8 +27,10 @@ Project for studies about concepts with React Native and Firebase integration
 <table>
   <tr>
     <td>Login View</td>
-     <td>Holiday Mention</td>
-     <td>Present day in purple and selected day in pink</td>
+
+[comment]: <> (     <td>Holiday Mention</td>)
+
+[comment]: <> (     <td>Present day in purple and selected day in pink</td>)
   </tr>
   <tr>
     <td><img src="login.png" width=270 height=480></td>
