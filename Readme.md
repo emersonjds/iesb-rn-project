@@ -27,8 +27,8 @@ Project for studies about concepts with React Native and Firebase integration
 <table cellspacing="0">
   <tr>
     <td>Login View</td>
-    <td>Holiday Mention</td>
-    <td>Present day in purple and selected day in pink</td>
+    <td>Home</td>
+    <td>Task Add</td>
   </tr>
   <tr>
     <td><img src="login.png" width=300 height=480></td>
@@ -36,7 +36,10 @@ Project for studies about concepts with React Native and Firebase integration
     <td><img src="view-home.png" width=300 height=480></td>
   </tr>
     <tr>
-    <td><img src="task.png" width=300 height=480></td>
+        <td>Add Task</td>
+    </tr>
+    <tr>
+        <td><img src="task.png" width=300 height=480></td>
     </tr>
  </table>
 
