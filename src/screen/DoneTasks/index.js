@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import TaskListView from '../../components/TaskListView';
-import { readTaskFromFirebaseAsync } from "../../services/firebaseApi";
+import { readTaskFromFirebaseAsync } from '../../services/firebaseApi';
 
 const DoneTasks = () => {
   const [tasks, setTasks] = useState([]);
 
+  // eslint-disable-next-line no-shadow
   const _fetchTasks = tasks => {
     const tasksTodos = tasks.filter(t => !t.isDone);
     setTasks(tasksTodos);

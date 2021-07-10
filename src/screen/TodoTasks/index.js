@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { readTaskFromFirebaseAsync } from "../../services/firebaseApi";
+import { readTaskFromFirebaseAsync } from '../../services/firebaseApi';
 import TaskListView from '../../components/TaskListView';
 import { ButtonTodo, Container } from './styles';
 

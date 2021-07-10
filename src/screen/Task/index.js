@@ -3,10 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Alert, Switch, Text } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { writeTaskOnFirebaseAsync } from '../../services/firebaseApi';
-import { Container, Input, SwitchContainer, SwitchText } from './styles';
+import {
+  Container,
+  Input,
+  SwitchContainer,
+  SwitchText,
+  TextButton,
+} from './styles';
 
 const Task = ({ navigation, route }) => {
-
   const [key, setKey] = useState('');
   const [title, setTitle] = useState('');
   const [resume, setResume] = useState('');
@@ -70,7 +75,7 @@ const Task = ({ navigation, route }) => {
       </SwitchContainer>
 
       <ButtonComponent onPress={() => _saveTaskAsync()}>
-        <Text style={{ color: '#fff', fontWeight: 'bold' }}>Salvar</Text>
+        <TextButton>Salvar</TextButton>
       </ButtonComponent>
     </Container>
   );

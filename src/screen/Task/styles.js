@@ -21,3 +21,8 @@ export const SwitchText = styled.TextInput`
   color: #000;
   font-size: 18px;
 `;
+
+export const TextButton = styled.Text`
+  color: #fff;
+  font-weight: bold;
+`;
