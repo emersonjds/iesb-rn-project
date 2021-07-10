@@ -31,12 +31,12 @@ Project for studies about concepts with React Native and Firebase integration
     <td>Present day in purple and selected day in pink</td>
   </tr>
   <tr>
-    <td><img src="login.png" width=270 height=480></td>
-    <td><img src="view-home.png" width=270 height=480></td>
-    <td><img src="empty-tasks.png" width=270 height=480></td>
+    <td><img src="login.png" width=300 height=480></td>
+    <td><img src="view-home.png" width=300 height=480></td>
+    <td><img src="empty-tasks.png" width=300 height=480></td>
   </tr>
     <tr>
-    <td><img src="task.png" width=270 height=480></td>
+    <td><img src="task.png" width=300 height=480></td>
     </tr>
  </table>
 
