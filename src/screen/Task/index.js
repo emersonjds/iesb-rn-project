@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Alert, Switch, Text } from 'react-native';
+import { Alert, Switch } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { writeTaskOnFirebaseAsync } from '../../services/firebaseApi';
 import {
   Container,
-  Input,
   SwitchContainer,
   SwitchText,
   TextButton,
+  Input,
 } from './styles';
+import { TextInput } from 'react-native-paper';
 
 const Task = ({ navigation, route }) => {
   const [key, setKey] = useState('');
@@ -52,19 +53,44 @@ const Task = ({ navigation, route }) => {
 
   return (
     <Container>
-      <Input
-        placeholder="Title"
-        onChangeText={value => setTitle(value)}
+      <TextInput
+        label="Nome da Tarefa"
         value={title}
+        onChangeText={text => setTitle(text)}
+        placeholder="Title"
+        multiple={true}
+        numberOfLines={4}
+        style={{
+          backgroundColor: 'white',
+          marginBottom: 15,
+          width: 360,
+          alignSelf: 'center',
+        }}
+        mode="outlined"
+        theme={{
+          colors: { primary: '#594da7', underlineColor: 'transparent' },
+        }}
       />
-      <Input
-        style={{ height: 100 }}
+
+      <TextInput
+        label="Descrição"
+        value={resume}
+        onChangeText={text => setResume(text)}
         placeholder="Resume"
         multiple={true}
         numberOfLines={4}
-        value={resume}
-        onChangeText={value => setResume(value)}
+        style={{
+          backgroundColor: 'white',
+          marginBottom: 15,
+          width: 360,
+          alignSelf: 'center',
+        }}
+        mode="outlined"
+        theme={{
+          colors: { primary: '#594da7', underlineColor: 'transparent' },
+        }}
       />
+
       <SwitchContainer>
         <Switch value={priority} onValueChange={value => setPriority(value)} />
         <SwitchText>High Priority</SwitchText>
