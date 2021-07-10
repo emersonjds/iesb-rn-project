@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { readTaskFromFirebaseAsync } from '../../services/firebaseApi';
 import TaskListView from '../../components/TaskListView';
 import { ButtonTodo, Container } from './styles';
+import { Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+Icon.loadFont();
 
 const ToDoTasks = ({ navigation }) => {
   const [tasks, setTasks] = useState([]);
@@ -24,7 +27,9 @@ const ToDoTasks = ({ navigation }) => {
     <>
       <Container>
         <TaskListView tasks={tasks} navigation={navigation} />
-        <ButtonTodo onPress={() => _goToTask()} />
+        <ButtonTodo onPress={() => _goToTask()}>
+          <Icon name="plus" color="#fff" size={24} />
+        </ButtonTodo>
       </Container>
     </>
   );

@@ -1,4 +1,4 @@
-import styled from 'styled-components/native'
+import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,5 +12,7 @@ export const ButtonTodo = styled.TouchableOpacity`
   position: absolute;
   bottom: 20px;
   right: 30px;
-  border-radius: 50;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
 `;
