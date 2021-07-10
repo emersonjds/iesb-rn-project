@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 
-import {
-  Text,
-  // TextInput,
-  Image,
-  Alert,
-  KeyboardAvoidingView,
-} from 'react-native';
+import { Text, Image, Alert } from 'react-native';
 import ButtonComponent from '../../components/ButtonComponent';
 import { signInOnFirebaseAsync } from '../../services/firebaseApi';
 import { CommonActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-paper';
 
-import { View } from 'react-native'
+import { View } from 'react-native';
 const img = require('../../assets/iconTodo.png');
 
 export const Login = ({ navigation }) => {
@@ -54,7 +48,7 @@ export const Login = ({ navigation }) => {
       </View>
       <View style={{ paddingHorizontal: 10, flex: 2 }}>
         <TextInput
-          label='Email'
+          label="Email"
           value={email}
           onChangeText={text => setEmail(text)}
           autoCapitalize="none"
@@ -62,14 +56,16 @@ export const Login = ({ navigation }) => {
             backgroundColor: 'white',
             marginBottom: 15,
             width: 360,
-            alignSelf: 'center'
+            alignSelf: 'center',
           }}
           keyboardType={'email-address'}
           mode="outlined"
-          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
+          theme={{
+            colors: { primary: '#594da7', underlineColor: 'transparent' },
+          }}
         />
         <TextInput
-          label='Senha'
+          label="Senha"
           value={password}
           onChangeText={text => setPassword(text)}
           autoCapitalize="none"
@@ -77,11 +73,13 @@ export const Login = ({ navigation }) => {
             backgroundColor: 'white',
             marginBottom: 5,
             width: 360,
-            alignSelf: 'center'
+            alignSelf: 'center',
           }}
           secureTextEntry={true}
           mode="outlined"
-          theme={{ colors: { primary: '#594da7', underlineColor: 'transparent', } }}
+          theme={{
+            colors: { primary: '#594da7', underlineColor: 'transparent' },
+          }}
         />
         <ButtonComponent onPress={() => signIn()}>
           <Text style={{ color: '#fff', fontWeight: 'bold' }}>Entrar</Text>
@@ -89,18 +87,18 @@ export const Login = ({ navigation }) => {
 
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <Text>Nao tem cadastro ainda ?!</Text>
-          <Text onPress={() =>
-            navigation.navigate('Register')}
+          <Text
+            onPress={() => navigation.navigate('Register')}
             style={{
               color: '#594da7',
               marginTop: 10,
               fontWeight: 'bold',
-              fontSize: 16
-            }}>Registre-se</Text>
+              fontSize: 16,
+            }}>
+            Registre-se
+          </Text>
         </View>
-
       </View>
-
     </>
   );
 };
