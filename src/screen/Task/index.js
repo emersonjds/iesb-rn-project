@@ -13,9 +13,8 @@ const Task = ({ navigation, route }) => {
   const [priority, setPriority] = useState(true);
   const [isDone, setIsDone] = useState(false);
 
-  const initialGetdata = () => {
-    // #TODO: corrigir async await
-    const { task } = route.params;
+  const initialGetdata = async () => {
+    const { task } = await route.params;
     if (task) {
       setKey(task?.key);
       setTitle(task?.title);
