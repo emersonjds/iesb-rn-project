@@ -5,7 +5,6 @@
 ## React Native Concepts
 
 Project for studies about concepts with React Native and Firebase integration
-
 <br />
 
 ## Techs
@@ -28,7 +27,7 @@ Project for studies about concepts with React Native and Firebase integration
   <tr>
     <td>Login View</td>
     <td>Home</td>
-    <td>Task Add</td>
+    <td>View tasks</td>
   </tr>
   <tr>
     <td><img src="login.png" width=300 height=480></td>
